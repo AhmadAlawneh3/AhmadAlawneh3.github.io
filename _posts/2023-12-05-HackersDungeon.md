@@ -1,6 +1,14 @@
+---
+title: Hacker's Dungeon Machine Write up
+categories: [Write-ups, MachinesCTF]
+tags: [CTF,Pentesting]     # TAG names should always be lowercase
+comments: false
+published: true
+---
+
 # Hacker's Dungeon
 IP: 10.0.0.133
-# Enumeration
+## **Enumeration**
 We start by scanning the machine with nmap.
 
 Discover all open ports:
@@ -11,9 +19,9 @@ Check what is exactly running on these ports:
 
 ![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-1.png)
 
-# Foothold
+## **Foothold**
 
-## Port 111 and 2049
+### Port 111 and 2049
 Check HackTricks for pentesting rpcbin and nfs.
 
 https://book.hacktricks.xyz/network-services-pentesting/pentesting-rpcbind#rpcbind-+-nfs
@@ -40,7 +48,7 @@ sudo mount -t nfs 10.0.0.133:dungeon /tmp/mount -o nolock
 
 Nothing interesting.
 
-## Port 80
+### Port 80
 As we saw in our nmap scan that the robots.txt file has one disallowed directory which is `wp-admin` which indecates that there is a wordpress running on port 80.
 
 Visiting the site.
@@ -87,7 +95,7 @@ We can find the user.txt flag in the user's home directory.
 
 ![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-11.png)
 
-# Privilege Escalation
+## **Privilege Escalation**
 
 Running `sudo -l` to check what the user kasi can run using sudo.
 

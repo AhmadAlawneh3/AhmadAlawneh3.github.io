@@ -1,10 +1,18 @@
-# ****Tufan Al-Aqsa**** 🇵🇸
+---
+title: Tufan Al-Aqsa Machine Write up
+categories: [Write-ups, MachinesCTF]
+tags: [CTF,Pentesting]     # TAG names should always be lowercase
+comments: false
+published: true
+---
+
+# **Tufan Al-Aqsa**
 
 ![Untitled](/assets/img/machinesCTF/Tufan-Al-Aqsa/Untitled.png)
 
 IP: 10.0.0.133
 
-# Enumeration
+## **Enumeration**
 We start by scanning the machine with nmap.
 
 Discover all open ports:
@@ -15,7 +23,7 @@ Check what is exactly running on these ports:
 
 ![Untitled](/assets/img/machinesCTF/Tufan-Al-Aqsa/Untitled%202.png)
 
-# Foothold
+## **Foothold**
 
 There is python web application running on port 80.
 
@@ -91,7 +99,7 @@ We can find the user.txt flag inside the home directory for the user zoznoor23. 
 
 ![Untitled](/assets/img/machinesCTF/Tufan-Al-Aqsa/Untitled%2010.png)
 
-# Privilege Escalation
+## **Privilege Escalation**
 Running `sudo -l` to check what the user zoznoor23 can run using sudo.
 
 ![Untitled](/assets/img/machinesCTF/Tufan-Al-Aqsa/Untitled%2011.png)

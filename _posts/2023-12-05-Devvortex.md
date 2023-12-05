@@ -1,5 +1,5 @@
 ---
-title: Devvortex
+title: HTB Devvortex Machine Write up
 categories: [Write-ups, HackTheBox]
 tags: [HTB]     # TAG names should always be lowercase
 comments: false
@@ -8,16 +8,12 @@ comments: false
 
 <img src="/assets/img/HTB/devvortex/2565d292772abc4a2d774117cf4d36ff.png" style="margin-left: 20px; zoom: 60%;" align=left alt="Machine image" >
 
-### Devvortex
-### Difficulty: easy
-<b>4<sup>th</sup> DEC 2023</b>
-### IP: 10.10.11.242
-<br><br><br><br>
+# Devvortex
+# Difficulty: easy
+<b>4<sup>th</sup> DEC 2023</b><br>
+<b>IP: 10.10.11.242</b>
 
-
-
-
-# Enumeration
+## **Enumeration**
 
 ```bash
 nmap -Pn -T4 -sVC 10.10.11.242 
@@ -25,7 +21,7 @@ nmap -Pn -T4 -sVC 10.10.11.242
 
 ![](/assets/img/HTB/devvortex/20231203225603.png)
 
-# Foothold
+## **Foothold**
 
 When accessing the IP directly thru the browser, it showed that we should resolve the domain devvortex.htb.
 ![](/assets/img/HTB/devvortex/20231203224326.png)
@@ -43,17 +39,17 @@ Then we refresh the page.
 
 A well designed website. Going around the site, checking linked pages and forms.
 It is just a static html, there is nothing interesting.
-## Directory enumeration
+### Directory enumeration
 ```bash
 gobuster dir -u http://devvortex.htb -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -x php,html,txt -t 50
 ```
-<!-- ![](/assets/img/HTB/devvortex/20231203231220.png) -->
+![](/assets/img/HTB/devvortex/20231203231220.png)
 
 No new results, we can check images, js and css directories but we will get 403 Forbidden.
 
 ![](/assets/img/HTB/devvortex/20231204125123.png)
 
-## VHOST enumeration
+### VHOST enumeration
 There might me another sites running on the same server.
 ```bash
 gobuster vhost -u devvortex.htb -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt  --append-domain
@@ -156,8 +152,8 @@ cat /etc/passwd | grep sh$
 
 ![](/assets/img/HTB/devvortex/20231204153044.png)
 
-# Privilege Escalation 
-## www-data to logan
+## **Privilege Escalation**
+### www-data to logan
 To read user.txt we need to be user logan.
 We already know the database credentials, we can get user logan password hash and crack it.
 
@@ -193,7 +189,7 @@ su logan
 
 ![](/assets/img/HTB/devvortex/20231204154330.png)
 
-## logan to root
+### logan to root
 Running `sudo -l` to check what the user logan can run using sudo.
 
 ![](/assets/img/HTB/devvortex/20231204154505.png)
