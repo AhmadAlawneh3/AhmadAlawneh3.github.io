@@ -6,7 +6,7 @@ published: true
 ---
 <h1>Hi, I'm Ahmad Alawneh!👋</h1>
 <h3>Dedicated and disciplined third year Cyber Security student.
-<br>Passtionate about security and programming.<br>
+<br>Passionate about security and programming.<br>
 Self learner.</h3>
 <div align="center" >
 
@@ -34,29 +34,29 @@ Self learner.</h3>
 <h2>Goals</h2>
 
 - <b> Side projects <b>
-- <b> Get eJPT certificate. </b>
-- <b> Learn more about web application penetration testing. </b>
-- <b> Get eWPT certificate. </b>
-- <b> Dive deeper into docker. </b>
-- <b> Improve my skills in python. </b>
+- <b> Get eJPT certificate </b>
+- <b> Learn more about web application penetration testing </b>
+- <b> Get eWPT certificate </b>
+- <b> Dive deeper into docker </b>
+- <b> Improve my skills in python </b>
 
 <h2>Projects</h2>
 
 - <b> [Gym web app](https://github.com/AhmadAlawneh3/Gym-web-app) </b>
-- <b> Scanner. </b>
-- <b> Password Generator. </b>
+- <b> Scanner </b>
+- <b> Password Generator </b>
 
 <h2>Skills</h2>
 
 - Penetration Testing
-- linux
+- Linux
 - Python
 - Networking
 - HTML/CSS/JavaScript
 - SQL
 - PHP
 
-<h2>Learning sources</h2>
+<h2>Learning Sources</h2>
 
 - [TryHackMe](https://tryhackme.com/p/4L4WN3.H4CK)
 - [HackTheBox](https://app.hackthebox.com/users/1109720)
