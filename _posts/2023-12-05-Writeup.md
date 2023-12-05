@@ -1,5 +1,5 @@
 ---
-title: Write-Ups
+title: Devvortex
 categories: [Write-ups, HackTheBox]
 tags: [HTB]     # TAG names should always be lowercase
 comments: false
