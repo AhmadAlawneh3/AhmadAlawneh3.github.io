@@ -4,6 +4,7 @@ categories: [Write-ups, MachinesCTF]
 tags: [CTF,Pentesting]     # TAG names should always be lowercase
 comments: false
 published: true
+img_path: /assets/img/machinesCTF/Hackers-Dungeon/
 ---
 
 # Hacker's Dungeon
@@ -13,11 +14,11 @@ We start by scanning the machine with nmap.
 
 Discover all open ports:
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image.png)
+![Alt text](image.png)
 
 Check what is exactly running on these ports:
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-1.png)
+![Alt text](image-1.png)
 
 ## **Foothold**
 
@@ -32,7 +33,7 @@ List NFS mounts:
 ```bash
 nmap --script="nfs-showmount" 10.0.0.133
 ```
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-13.png)
+![Alt text](image-13.png)
 
 There is one folder `/dungeon`.
 
@@ -44,7 +45,7 @@ mkdir /tmp/mount
 sudo mount -t nfs 10.0.0.133:dungeon /tmp/mount -o nolock
 ```
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-14.png)
+![Alt text](image-14.png)
 
 Nothing interesting.
 
@@ -54,52 +55,52 @@ As we saw in our nmap scan that the robots.txt file has one disallowed directory
 Visiting the site.
 
 We know the version of wordpress and apache this might be helpfull, but let us look around more.
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-4.png)
+![Alt text](image-4.png)
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-5.png)
+![Alt text](image-5.png)
 Nothing seems interesting.
 
 Checking the post by cliking on the date.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-6.png)
+![Alt text](image-6.png)
 We notice that the post was written by  user kasi.
 
 We can confirm that the user kasi exists by trying to login with any random password on `wp-login.php` adn reading the error message.
 
 The different weeor message will be displayed if we try random username and password `test:test`.
 
-![Alt text]/assets/img/machinesCTF/Hackers-Dungeon/(image-7.png)
+![Alt text](image-7.png)
 
 We try to brute force kasi's password using hydra.
 
 ```bash
 hydra -l kasi -P /usr/share/wordlists/rockyou.txt 10.0.0.133 http-form-post "/wp-login.php:log=^USER^&pwd=^PASS^:F=incorrect" 
 ```
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-8.png)
+![Alt text](image-8.png)
 
 We got the user's password `dogcat`.
 
 After logging in we land on the profile page of the user, there is nothing interesting there.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-9.png)
+![Alt text](image-9.png)
 
 Going around the dashboard we find out that we are normal user, so we cant do much.
 
 Let us try and login with the same credentials thru ssh, there is a great chance the password is reused.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-10.png)
+![Alt text](image-10.png)
 
 And we are in!!
 
 We can find the user.txt flag in the user's home directory.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-11.png)
+![Alt text](image-11.png)
 
 ## **Privilege Escalation**
 
 Running `sudo -l` to check what the user kasi can run using sudo.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-12.png)
+![Alt text](image-12.png)
 
 Run python simple web server on our attacking machine to host linpeas.sh, to transfer it to the machine.
 
@@ -107,8 +108,8 @@ Run python simple web server on our attacking machine to host linpeas.sh, to tra
 python3 -m http.server 80
 ```
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-15.png)
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-16.png)
+![Alt text](image-15.png)
+![Alt text](image-16.png)
 
 What is root_squash?
 
@@ -135,13 +136,13 @@ gcc test.c -o test
 
 As the root user on the attacking machine copy the binray `test` to the mounted directory, and set the SUID bit for it.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-17.png)
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-18.png)
+![Alt text](image-17.png)
+![Alt text](image-18.png)
 
 Back to the target machine on /dungeon we can find the binary and run it.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-19.png)
+![Alt text](image-19.png)
 
 We can find the root.txt flag in the root user's home directory.
 
-![Alt text](/assets/img/machinesCTF/Hackers-Dungeon/image-20.png)
+![Alt text](image-20.png)
