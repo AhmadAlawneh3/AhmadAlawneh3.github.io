@@ -11,19 +11,19 @@ Self learner.</h3>
 <div align="center" >
 
   <a href="https://www.linkedin.com/in/ahmad-alawneh-81440952/" style="text-decoration: none;" >
-    <img src="/assets/img/about/linkedin.png" width="32px" style="max-width: 100%;">
+    <img src="/assets/img/about/linkedin.png" width="32px" style="max-width: 100%;" alt="linkedin">
     </a>
   <a href="https://app.hackthebox.com/users/1109720" style="text-decoration: none;">
-    <img src="/assets/img/about/HTB.png" width="35px" style="max-width: 100%; margin: 40px;">
+    <img src="/assets/img/about/HTB.png" width="35px" style="max-width: 100%; margin: 40px;" alt="HackTheBox">
     </a>
   <a href="https://tryhackme.com/p/4L4WN3.H4CK" style="text-decoration: none;">
-    <img src="/assets/img/about/THM.png" width="35px" style="max-width: 100%;">
+    <img src="/assets/img/about/THM.png" width="35px" style="max-width: 100%;" alt="TryHackMe">
     </a>
 
   <br>
   <br>
   <br>
-  <img src="https://www.hackthebox.com/badge/image/1109720" >
+  <img src="https://www.hackthebox.com/badge/image/1109720" alt="HackTheBox Badge" >
   <a href="https://tryhackme.com/p/4L4WN3.H4CK"><script src="https://tryhackme.com/badge/1472507"></script></a>
 </div>
 <h2>Certifications</h2>
