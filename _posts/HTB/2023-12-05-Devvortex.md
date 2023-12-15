@@ -1,13 +1,14 @@
 ---
-title: HTB Devvortex Machine Write up
+title: HTB Devvortex Write up
 categories: [Write-ups, HackTheBox]
 tags: [HTB]     # TAG names should always be lowercase
 comments: false
 img_path: /assets/img/HTB/devvortex/
+image: Devvortex.png
 
 ---
 
-<img src="2565d292772abc4a2d774117cf4d36ff.png" style="margin-left: 20px; zoom: 60%;" align=left alt="Machine image" >
+<!-- <img src="2565d292772abc4a2d774117cf4d36ff.png" style="margin-left: 20px; zoom: 60%;" align=left alt="Machine image" > -->
 
 # Devvortex
 # Difficulty: easy
