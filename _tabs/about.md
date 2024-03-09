@@ -43,8 +43,6 @@ Self learner.</h3>
 <h2>Projects</h2>
 
 - <b> [Gym web app](https://github.com/AhmadAlawneh3/Gym-web-app) </b>
-- <b> Scanner </b>
-- <b> Password Generator </b>
 
 <h2>Skills</h2>
 
